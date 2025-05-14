@@ -61,7 +61,7 @@ h1 {
 
 .tools {
     margin-top: 1rem;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-align: center;
     font-family: 'Orbitron', sans-serif;
 }
@@ -77,18 +77,12 @@ h1 {
     text-shadow: 0 0 10px #0f0;
 }
 
-.bottom-left {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    color: #0f0;
-}
-
 .links {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 1rem;
+    align-items: center;
 }
 
 .links a {
@@ -104,6 +98,13 @@ h1 {
     color: #00cc00;
     text-shadow: 0 0 10px #00cc00;
     transform: scale(1.1);
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: #0f0;
 }
 
 .bottom-left h3 {
@@ -223,12 +224,12 @@ h1 {
         height: 250px;
         font-size: 1rem;
     }
+    .tools {
+        font-size: 0.9rem;
+    }
     .links a {
         font-size: 1.2rem;
         padding: 0.4rem 0;
-    }
-    .tools {
-        font-size: 0.8rem;
     }
     .bottom-left, .bottom-right {
         position: static;
