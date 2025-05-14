@@ -60,11 +60,27 @@ h1 {
     animation: blink 1s infinite;
 }
 
-.tools {
+.social-links {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.social-links a {
+    color: #0f0;
+    text-decoration: none;
     font-size: 1rem;
-    text-align: center;
     font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.social-links a:hover {
+    color: #00cc00;
+    text-shadow: 0 0 10px #00cc00;
+    transform: scale(1.1);
 }
 
 .links {
@@ -215,6 +231,9 @@ h1 {
     .links a {
         font-size: 1.2rem;
         padding: 0.4rem 0;
+    }
+    .social-links a {
+        font-size: 0.9rem;
     }
     .bottom-left, .bottom-right {
         position: static;
