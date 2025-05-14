@@ -39,20 +39,57 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
 });
 
-// 支付和深网链接逻辑
+// 标题逐字显示
+const titleElement = document.getElementById('title');
+const titleText = 'Primordial HQ²';
+let titleIndex = 0;
+
+function typeTitle() {
+    if (titleIndex < titleText.length) {
+        titleElement.textContent += titleText.charAt(titleIndex);
+        titleIndex++;
+        setTimeout(typeTitle, 200);
+    }
+}
+
+window.addEventListener('load', typeTitle);
+
+// 终端打字效果
+const terminalText = document.getElementById('terminal-text');
+const terminalPhrases = [
+    'Initializing system...',
+    'Scanning network...',
+    'Bypassing firewall...',
+    'Access granted.'
+];
+let phraseIndex = 0;
+let charIndex = 0;
+
+function typeTerminal() {
+    if (phraseIndex < terminalPhrases.length) {
+        const currentPhrase = terminalPhrases[phraseIndex];
+        if (charIndex <= currentPhrase.length) {
+            terminalText.textContent = currentPhrase.substring(0, charIndex) + '_';
+            charIndex++;
+            setTimeout(typeTerminal, 100);
+        } else {
+            setTimeout(() => {
+                charIndex = 0;
+                phraseIndex = (phraseIndex + 1) % terminalPhrases.length;
+                terminalText.textContent = '';
+                typeTerminal();
+            }, 2000);
+        }
+    }
+}
+
+window.addEventListener('load', typeTerminal);
+
+// 支付提示
 function showPaymentInfo() {
     document.getElementById('payment-info').classList.remove('hidden');
 }
 
 function closePaymentInfo() {
     document.getElementById('payment-info').classList.add('hidden');
-}
-
-function revealDeepWebLink() {
-    document.getElementById('payment-info').classList.add('hidden');
-    document.getElementById('deep-web-access').classList.remove('hidden');
-}
-
-function closeDeepWebAccess() {
-    document.getElementById('deep-web-access').classList.add('hidden');
 }
