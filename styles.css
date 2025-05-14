@@ -25,16 +25,48 @@ canvas#matrix {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     height: 100vh;
     text-align: center;
+    padding: 2rem;
 }
 
 h1 {
     font-size: 4rem;
     text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-    margin-bottom: 2rem;
     animation: glow 2s ease-in-out infinite alternate;
+}
+
+.content {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.terminal {
+    width: 200px;
+    height: 200px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #0f0;
+    padding: 1rem;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+    overflow: hidden;
+    position: relative;
+}
+
+#terminal-text::after {
+    content: '_';
+    animation: blink 0.7s infinite;
+}
+
+.hacker-tools {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
 }
 
 .links {
@@ -43,39 +75,103 @@ h1 {
     gap: 1.5rem;
 }
 
-.link-row {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-    width: 100%;
-}
-
-.links a, .side-link {
+.links a {
     color: #0f0;
-    text-decoration: none;
+    text-decoration: underline;
     font-size: 1.5rem;
-    padding: 0.5rem 1rem;
-    border: 2px solid #0f0;
-    border-radius: 5px;
     transition: all 0.3s ease;
     text-shadow: 0 0 5px #0f0;
 }
 
-.side-link.left, .side-link.right {
-    width: 200px;
-    text-align: center;
+.links a:hover {
+    color: #00cc00;
+    text-shadow: 0 0 10px #00cc00;
+    transform: scale(1.1);
 }
 
-.side-link.left:empty, .side-link.right:empty {
-    border: none;
+.bottom-left {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    text-align: left;
 }
 
-.links a:hover, .side-link:hover:not(:empty) {
+.bottom-left h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.bottom-left ul {
+    list-style: none;
+}
+
+.bottom-left a {
+    color: #0f0;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.bottom-left a:hover {
+    color: #00cc00;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.bottom-right a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.6rem;
+    border: 2px solid;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.hacker-entry {
+    color: #0f0;
+    border-color: #0f0;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.hacker-entry:hover {
     background: #0f0;
     color: #000;
-    box-shadow: 0 0 15px #0f0;
-    transform: scale(1.1);
+    box-shadow: 0 0 10px #0f0;
+    transform: rotate(5deg) scale(1.1);
+}
+
+.dark-web-entry {
+    color: #800080;
+    border-color: #800080;
+    text-shadow: 0 0 5px #800080;
+}
+
+.dark-web-entry:hover {
+    background: #800080;
+    color: #fff;
+    box-shadow: 0 0 10px #800080;
+    transform: rotate(5deg) scale(1.1);
+}
+
+.deep-web-entry {
+    color: #ff0000;
+    border-color: #ff0000;
+    text-shadow: 0 0 5px #ff0000;
+}
+
+.deep-web-entry:hover {
+    background: #ff0000;
+    color: #fff;
+    box-shadow: 0 0 10px #ff0000;
+    transform: rotate(5deg) scale(1.1);
 }
 
 .payment-info {
@@ -90,7 +186,6 @@ h1 {
     color: #0f0;
     text-align: center;
     z-index: 10;
-    max-width: 90%;
 }
 
 .payment-info p {
@@ -109,7 +204,6 @@ h1 {
     padding: 0.5rem 1rem;
     border-radius: 5px;
     cursor: pointer;
-    margin: 0.5rem;
     transition: all 0.3s ease;
 }
 
@@ -131,20 +225,50 @@ h1 {
     }
 }
 
-/* 响应式设计 */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5rem;
     }
-    .links a, .side-link {
-        font-size: 1.2rem;
-        padding: 0.4rem 0.8rem;
-    }
-    .side-link.left, .side-link.right {
-        width: 120px;
-    }
-    .link-row {
+    .content {
+        flex-direction: column;
+        align-items: center;
         gap: 1rem;
+    }
+    .terminal {
+        width: 150px;
+        height: 150px;
+        font-size: 0.8rem;
+    }
+    .hacker-tools {
+        font-size: 0.7rem;
+    }
+    .links a {
+        font-size: 1.2rem;
+    }
+    .bottom-left, .bottom-right {
+        position: static;
+        margin-top: 1rem;
+    }
+    .bottom-right {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .bottom-right a {
+        font-size: 1rem;
+        padding: 0.2rem 0.4rem;
+    }
+    .bottom-left h3 {
+        font-size: 1rem;
+    }
+    .bottom-left a {
+        font-size: 0.8rem;
     }
     .payment-info {
         width: 90%;
