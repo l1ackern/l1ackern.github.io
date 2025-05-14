@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000;
+    color: #0f0;
+    font-family: 'Orbitron', sans-serif;
+    overflow-x: hidden;
+}
+
+canvas#matrix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.7;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+h1 {
+    font-size: 4rem;
+    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
+    margin-bottom: 2rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.link-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+}
+
+.links a, .side-link {
+    color: #0f0;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid #0f0;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-shadow: 0 0 5px #0f0;
+}
+
+.side-link.left, .side-link.right {
+    width: 200px;
+    text-align: center;
+}
+
+.side-link.left:empty, .side-link.right:empty {
+    border: none;
+}
+
+.links a:hover, .side-link:hover:not(:empty) {
+    background: #0f0;
+    color: #000;
+    box-shadow: 0 0 15px #0f0;
+    transform: scale(1.1);
+}
+
+.payment-info {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 2rem;
+    border: 2px solid #0f0;
+    border-radius: 10px;
+    color: #0f0;
+    text-align: center;
+    z-index: 10;
+    max-width: 90%;
+}
+
+.payment-info p {
+    margin-bottom: 1rem;
+}
+
+.payment-info a {
+    color: #0f0;
+    text-decoration: underline;
+}
+
+.payment-info button {
+    background: #0f0;
+    color: #000;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.payment-info button:hover {
+    background: #00cc00;
+    box-shadow: 0 0 10px #0f0;
+}
+
+.hidden {
+    display: none;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
+    }
+    to {
+        text-shadow: 0 0 20px #0f0, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .links a, .side-link {
+        font-size: 1.2rem;
+        padding: 0.4rem 0.8rem;
+    }
+    .side-link.left, .side-link.right {
+        width: 120px;
+    }
+    .link-row {
+        gap: 1rem;
+    }
+    .payment-info {
+        width: 90%;
+        padding: 1rem;
+    }
+}
