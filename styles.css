@@ -38,8 +38,7 @@ h1 {
 
 .main-content {
     display: flex;
-    align-items: flex-start;
-    gap: 3rem;
+    justify-content: center;
 }
 
 .terminal {
@@ -60,33 +59,36 @@ h1 {
     animation: blink 1s infinite;
 }
 
-.social-links {
+.tools {
     margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: center;
+    font-size: 0.9rem;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
 }
 
-.social-links a {
+.tools a {
     color: #0f0;
     text-decoration: none;
-    font-size: 1rem;
-    font-family: 'Orbitron', sans-serif;
     transition: all 0.3s ease;
-    text-shadow: 0 0 5px #0f0;
 }
 
-.social-links a:hover {
-    color: #00cc00;
-    text-shadow: 0 0 10px #00cc00;
-    transform: scale(1.1);
+.tools a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 10px #0f0;
+}
+
+.bottom-left {
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
+    color: #0f0;
 }
 
 .links {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .links a {
@@ -104,13 +106,6 @@ h1 {
     transform: scale(1.1);
 }
 
-.bottom-left {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    color: #0f0;
-}
-
 .bottom-left h3 {
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
@@ -121,14 +116,14 @@ h1 {
     list-style: none;
 }
 
-.bottom-left a {
+.bottom-left ul a {
     color: #0f0;
     text-decoration: none;
     font-size: 1rem;
     transition: all 0.3s ease;
 }
 
-.bottom-left a:hover {
+.bottom-left ul a:hover {
     text-decoration: underline;
     text-shadow: 0 0 10px #0f0;
 }
@@ -232,8 +227,8 @@ h1 {
         font-size: 1.2rem;
         padding: 0.4rem 0;
     }
-    .social-links a {
-        font-size: 0.9rem;
+    .tools {
+        font-size: 0.8rem;
     }
     .bottom-left, .bottom-right {
         position: static;
