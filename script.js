@@ -1,4 +1,4 @@
-// 数字雨效果
+// Matrix Digital Rain
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
 
@@ -39,7 +39,7 @@ window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
 });
 
-// 标题逐字动画
+// Title Typing Animation
 const titleElement = document.getElementById('title');
 const titleText = 'Primordial HQ²';
 let titleIndex = 0;
@@ -54,7 +54,7 @@ function typeTitle() {
 
 window.addEventListener('load', typeTitle);
 
-// 终端打字动画
+// Terminal Typing Animation
 const terminalElement = document.getElementById('terminal-text');
 const terminalTexts = [
     'whoami',
@@ -86,9 +86,9 @@ function typeTerminal() {
     }
 }
 
-window.addEventListener(' en', () => setTimeout(typeTerminal, 1000));
+window.addEventListener('load', () => setTimeout(typeTerminal, 1000));
 
-// 支付弹窗
+// Payment Popup
 function showPaymentInfo() {
     document.getElementById('payment-info').classList.remove('hidden');
 }
