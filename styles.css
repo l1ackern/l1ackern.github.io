@@ -1,290 +1,111 @@
-* {
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background: #000;
-    color: #0f0;
-    font-family: 'Orbitron', sans-serif;
-    overflow-x: hidden;
-}
-
-canvas#matrix {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    opacity: 0.7;
-}
-
-.container {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Courier New', Courier, monospace;
+    color: #00FF00; /* Neon green text */
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
     height: 100vh;
-    padding: 2rem;
-}
-
-h1 {
-    font-size: 4rem;
-    text-shadow: 0 0 10px #0f0, 0 0 20px #0f0;
-    animation: glow 2s ease-in-out infinite alternate;
-    margin-bottom: 1rem;
-}
-
-.counter {
-    display: flex;
-    gap: 1rem;
-    font-family: 'VT323', monospace;
-    font-size: 2rem;
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0;
-    margin-bottom: 1rem;
-}
-
-.counter-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.counter-item span {
-    font-size: 2.5rem;
-}
-
-.counter-item label {
-    font-size: 1rem;
-    text-transform: uppercase;
-}
-
-.reborn {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.5rem;
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0;
-    margin-bottom: 1rem;
-}
-
-.main-content {
-    display: flex;
-    align-items: flex-start;
-    gap: 3rem;
-}
-
-.terminal {
-    width: 300px;
-    height: 300px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 2px solid #0f0;
-    padding: 1rem;
-    font-family: 'VT323', monospace;
-    font-size: 1.2rem;
-    color: #0f0;
-    text-shadow: 0 0 5px #0f0;
     overflow: hidden;
 }
 
-#terminal-text::after {
-    content: '|';
-    animation: blink 1s infinite;
-}
-
-.tools {
-    margin-top: 1rem;
-    font-size: 1rem;
+.container {
     text-align: center;
-    font-family: 'Orbitron', sans-serif;
 }
 
-.tools a {
-    color: #0f0;
-    text-decoration: none;
-    transition: all 0.3s ease;
+h1 {
+    font-size: 3rem;
+    text-shadow: 0 0 10px #00FF00;
+    margin-bottom: 2rem;
 }
 
-.tools a:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 10px #0f0;
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
 }
 
-.links {
+.time-unit {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    align-items: center;
 }
 
-.links a {
-    color: #0f0;
-    text-decoration: underline;
-    font-size: 1.3rem;
-    padding: 0.5rem 0;
-    transition: all 0.3s ease;
-    text-shadow: 0 0 5px #0f0;
-}
-
-.links a:hover {
-    color: #00cc00;
-    text-shadow: 0 0 10px #00cc00;
-    transform: scale(1.1);
-}
-
-.bottom-left {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    color: #0f0;
-}
-
-.bottom-left h3 {
-    font-size: 1.2rem;
+.time-label {
+    font-size: 1.5rem;
+    color: #00FF00;
+    text-decoration: none;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 5px #0f0;
 }
 
-.bottom-left ul {
-    list-style: none;
+.time-label:hover {
+    text-shadow: 0 0 10px #00FF00;
 }
 
-.bottom-left ul a {
-    color: #0f0;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.bottom-left ul a:hover {
-    text-decoration: underline;
-    text-shadow: 0 0 10px #0f0;
-}
-
-.bottom-right {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    display: flex;
-    gap: 1rem;
-}
-
-.entry {
-    text-decoration: none;
-    font-size: 0.9rem;
-    color: #ff0000;
-    text-shadow: 0 0 5px #ff0000;
-    transition: all 0.3s ease;
-}
-
-.entry:hover {
-    color: #000;
-    background: #ff0000;
-    text-shadow: none;
-    transform: scale(1.1);
-}
-
-.payment-info {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
-    padding: 2rem;
-    border: 2px solid #0f0;
-    border-radius: 10px;
-    color: #0f0;
-    text-align: center;
-    z-index: 10;
-}
-
-.payment-info p {
-    margin-bottom: 1rem;
-}
-
-.payment-info a {
-    color: #0f0;
-    text-decoration: underline;
-}
-
-.payment-info button {
-    background: #0f0;
-    color: #000;
-    border: none;
+.time-unit span {
+    font-size: 2.5rem;
+    background: rgba(0, 0, 0, 0.7);
     padding: 0.5rem 1rem;
     border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
 }
 
-.payment-info button:hover {
-    background: #00cc00;
-    box-shadow: 0 0 10px #0f0;
+.link a {
+    font-size: 1.5rem;
+    color: #00FF00;
+    text-decoration: none;
+}
+
+.link a:hover {
+    text-shadow: 0 0 10px #00FF00;
+}
+
+#marianas {
+    font-size: 2rem;
+    display: none;
+}
+
+#marianas a {
+    color: #00FF00;
+    text-decoration: none;
+}
+
+#marianas a:hover {
+    text-shadow: 0 0 10px #00FF00;
 }
 
 .hidden {
     display: none;
 }
 
-@keyframes glow {
-    from {
-        text-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 30px #0f0;
-    }
-    to {
-        text-shadow: 0 0 20px #0f0, 0 0 30px #00ff00, 0 0 40px #00ff00;
-    }
-}
-
-@keyframes blink {
-    50% {
-        opacity: 0;
-    }
-}
-
-/* Responsive Design */
+/* 响应式设计 */
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
-    }
-    .counter {
-        flex-direction: column;
-        font-size: 1.5rem;
-    }
-    .counter-item span {
         font-size: 2rem;
     }
-    .reborn {
+
+    .countdown {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .time-label {
         font-size: 1.2rem;
     }
-    .main-content {
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
+
+    .time-unit span {
+        font-size: 2rem;
     }
-    .terminal {
-        width: 250px;
-        height: 250px;
-        font-size: 1rem;
+
+    .link a {
+        font-size: 1.2rem;
     }
-    .tools {
-        font-size: 0.9rem;
-    }
-    .links a {
-        font-size: 1.1rem;
-        padding: 0.4rem 0;
-    }
-    .bottom-left, .bottom-right {
-        position: static;
-        margin-top: 1rem;
-        text-align: center;
-    }
-    .bottom-right {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-    .payment-info {
-        width: 90%;
-        padding: 1rem;
+
+    #marianas {
+        font-size: 1.5rem;
     }
 }
