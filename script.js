@@ -1,5 +1,5 @@
-// 设置倒计时初始值（1229天18小时04分钟14秒）
-let totalSeconds = (1229 * 24 * 60 * 60) + (18 * 60 * 60) + (4 * 60) + 14;
+// 设置倒计时初始值（1229天18小时03分钟18秒）
+let totalSeconds = (1229 * 24 * 60 * 60) + (18 * 60 * 60) + (3 * 60) + 18;
 
 const daysEl = document.getElementById('days');
 const hoursEl = document.getElementById('hours');
@@ -10,8 +10,9 @@ const marianasWebEl = document.getElementById('marianas-web');
 
 function updateCountdown() {
     if (totalSeconds <= 0) {
-        // 倒计时结束，隐藏倒计时，显示 MarianasWeb
+        // 倒计时结束，隐藏倒计时和社交标签，显示 MarianasWeb
         countdownEl.style.display = 'none';
+        document.querySelector('.social-labels').style.display = 'none';
         marianasWebEl.style.display = 'block';
         return;
     }
