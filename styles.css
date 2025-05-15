@@ -6,36 +6,53 @@
 
 body {
     background-color: #000;
-    color: #ff5555;
+    color: #8b0000;
     font-family: Arial, sans-serif;
     text-align: center;
     overflow-x: hidden;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
 }
 
-.header {
-    flex: 0 0 auto;
+.container {
+    max-width: 100%;
     padding: 20px;
+    margin: 0 auto;
+    min-height: 100vh;
+    position: relative;
 }
 
 h1 {
     font-size: 5rem;
     text-transform: uppercase;
+    position: absolute;
+    top: 10%;
+    width: 100%;
 }
 
-.content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding-bottom: 33vh; /* 底部往上 2/3 */
+.lrbilool-section {
+    position: absolute;
+    top: 45%;
+    width: 100%;
+    transform: translateY(-50%);
 }
 
 #lrbilool {
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+}
+
+.lrbilool-countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.lrbilool-countdown .separator {
+    font-size: 2rem;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
 }
 
 .countdown {
@@ -44,7 +61,9 @@ h1 {
     align-items: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 20px;
+    position: absolute;
+    top: 75%;
+    width: 100%;
 }
 
 .time-unit {
@@ -57,34 +76,29 @@ h1 {
 .time-unit span {
     font-size: 3rem;
     font-weight: bold;
-    line-height: 1;
+}
+
+.time-unit p {
+    font-size: 1.2rem;
+    margin-top: 10px;
 }
 
 .separator {
     font-size: 3rem;
     font-weight: bold;
-    line-height: 1;
-    width: 20px;
-    text-align: center;
-}
-
-.social-labels {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.social-labels p {
-    font-size: 1.2rem;
+    margin: 0 5px;
+    display: inline-flex;
+    align-items: center;
 }
 
 #marianas-web {
-    margin-top: 40px;
+    position: absolute;
+    top: 75%;
+    width: 100%;
 }
 
 #marianas-web a {
-    color: #ff5555;
+    color: #8b0000;
     font-size: 2.5rem;
     text-decoration: none;
     font-weight: bold;
@@ -98,23 +112,46 @@ h1 {
 @media (max-width: 768px) {
     h1 {
         font-size: 3rem;
+        top: 8%;
+    }
+
+    .lrbilool-section {
+        top: 40%;
     }
 
     #lrbilool {
         font-size: 1.5rem;
+        margin-bottom: 10px;
+    }
+
+    .lrbilool-countdown {
+        font-size: 1.5rem;
+    }
+
+    .lrbilool-countdown .separator {
+        font-size: 1.5rem;
+        margin: 0 4px;
+    }
+
+    .countdown {
+        top: 70%;
     }
 
     .time-unit span {
         font-size: 2rem;
     }
 
-    .separator {
-        font-size: 2rem;
-        width: 15px;
+    .time-unit p {
+        font-size: 1rem;
     }
 
-    .social-labels p {
-        font-size: 1rem;
+    .separator {
+        font-size: 2rem;
+        margin: 0 4px;
+    }
+
+    #marianas-web {
+        top: 70%;
     }
 
     #marianas-web a {
@@ -125,13 +162,29 @@ h1 {
 @media (max-width: 480px) {
     h1 {
         font-size: 2rem;
+        top: 5%;
+    }
+
+    .lrbilool-section {
+        top: 35%;
     }
 
     #lrbilool {
         font-size: 1.2rem;
+        margin-bottom: 8px;
+    }
+
+    .lrbilool-countdown {
+        font-size: 1.2rem;
+    }
+
+    .lrbilool-countdown .separator {
+        font-size: 1.2rem;
+        margin: 0 3px;
     }
 
     .countdown {
+        top: 65%;
         gap: 5px;
     }
 
@@ -143,17 +196,17 @@ h1 {
         font-size: 1.5rem;
     }
 
+    .time-unit p {
+        font-size: 0.8rem;
+    }
+
     .separator {
         font-size: 1.5rem;
-        width: 10px;
+        margin: 0 3px;
     }
 
-    .social-labels {
-        gap: 10px;
-    }
-
-    .social-labels p {
-        font-size: 0.8rem;
+    #marianas-web {
+        top: 65%;
     }
 
     #marianas-web a {
