@@ -1,43 +1,54 @@
-// 设置倒计时目标时间（示例：2025年12月29日18:04:14）
-const targetDate = new Date("2025-12-29T18:04:14").getTime();
+document.addEventListener('DOMContentLoaded', () => {
+    // 设置倒计时目标时间（1229天18小时04分14秒从现在开始）
+    const now = new Date();
+    const targetDate = new Date(now.getTime() + (1229 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (4 * 60 * 1000) + (14 * 1000));
 
-function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDate - now;
+    // 获取 DOM 元素
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
+    const marianasWebEl = document.getElementById('marianas-web');
+    const countdownEl = document.querySelector('.countdown');
 
-    if (distance <= 0) {
-        document.querySelector(".countdown").classList.add("hidden");
-        document.getElementById("marianas").classList.remove("hidden");
-        clearInterval(countdownInterval);
-        return;
+    // 倒计时函数
+    function updateCountdown() {
+        const now = new Date();
+        const timeLeft = targetDate - now;
+
+        if (timeLeft <= 0) {
+            // 倒计时结束，显示 MarianasWeb
+            countdownEl.style.display = 'none';
+            marianasWebEl.classList.remove('hidden');
+            return;
+        }
+
+        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+        daysEl.textContent = days;
+        hoursEl.textContent = hours;
+        minutesEl.textContent = minutes;
+        secondsEl.textContent = seconds;
     }
 
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    document.getElementById("days").textContent = days.toString().padStart(2, "0");
-    document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
-    document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
-    document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
-}
-
-// 每秒更新倒计时
-const countdownInterval = setInterval(updateCountdown, 1000);
-
-// 社交媒体链接
-document.querySelectorAll(".countdown div").forEach((div, index) => {
-    div.addEventListener("click", () => {
-        const links = [
-            "https://chat.whatsapp.com/Ca4vxYoUXfw9o5qkQK9LfH",
-            "https://www.facebook.com/profile.php?id=100076137814695&mibextid=wwXIfr&mibextid=wwXIfr",
-            "https://t.me/+tpGtShXErUg2OWY1",
-            "https://discord.gg/96ePBBRKAs"
-        ];
-        window.location.href = links[index];
+    // 点击跳转链接
+    daysEl.parentElement.addEventListener('click', () => {
+        window.open('https://chat.whatsapp.com/Ca4vxYoUXfw9o5qkQK9LfH', '_blank');
     });
-});
+    hoursEl.parentElement.addEventListener('click', () => {
+        window.open('https://www.facebook.com/profile.php?id=100076137814695&mibextid=wwXIfr&mibextid=wwXIfr', '_blank');
+    });
+    minutesEl.parentElement.addEventListener('click',  () => {
+        window.open('https://t.me/+tpGtShXErUg2OWY1', '_blank');
+    });
+    secondsEl.parentElement.addEventListener('click', () => {
+        window.open('https://discord.gg/96ePBBRKAs', '_blank');
+    });
 
-// 初始调用
-updateCountdown();
+    // 每秒更新倒计时
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+});
