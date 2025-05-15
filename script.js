@@ -5,7 +5,7 @@ const daysEl = document.getElementById('days');
 const hoursEl = document.getElementById('hours');
 const minutesEl = document.getElementById('minutes');
 const secondsEl = document.getElementById('seconds');
-const countdownEl = document.querySelector('.countdown');
+const countdownEl = document.querySelector('.countdown-section');
 const marianasWebEl = document.getElementById('marianas-web');
 
 // 主倒计时更新
