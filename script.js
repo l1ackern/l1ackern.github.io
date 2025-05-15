@@ -1,54 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 设置倒计时目标时间（1229天18小时04分14秒从现在开始）
-    const now = new Date();
-    const targetDate = new Date(now.getTime() + (1229 * 24 * 60 * 60 * 1000) + (18 * 60 * 60 * 1000) + (4 * 60 * 1000) + (14 * 1000));
+// 设置倒计时初始值（1229天18小时04分钟14秒）
+let totalSeconds = (1229 * 24 * 60 * 60) + (18 * 60 * 60) + (4 * 60) + 14;
 
-    // 获取 DOM 元素
-    const daysEl = document.getElementById('days');
-    const hoursEl = document.getElementById('hours');
-    const minutesEl = document.getElementById('minutes');
-    const secondsEl = document.getElementById('seconds');
-    const marianasWebEl = document.getElementById('marianas-web');
-    const countdownEl = document.querySelector('.countdown');
+const daysEl = document.getElementById('days');
+const hoursEl = document.getElementById('hours');
+const minutesEl = document.getElementById('minutes');
+const secondsEl = document.getElementById('seconds');
+const countdownEl = document.querySelector('.countdown');
+const marianasWebEl = document.getElementById('marianas-web');
 
-    // 倒计时函数
-    function updateCountdown() {
-        const now = new Date();
-        const timeLeft = targetDate - now;
-
-        if (timeLeft <= 0) {
-            // 倒计时结束，显示 MarianasWeb
-            countdownEl.style.display = 'none';
-            marianasWebEl.classList.remove('hidden');
-            return;
-        }
-
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        daysEl.textContent = days;
-        hoursEl.textContent = hours;
-        minutesEl.textContent = minutes;
-        secondsEl.textContent = seconds;
+function updateCountdown() {
+    if (totalSeconds <= 0) {
+        // 倒计时结束，隐藏倒计时，显示 MarianasWeb
+        countdownEl.style.display = 'none';
+        marianasWebEl.style.display = 'block';
+        return;
     }
 
-    // 点击跳转链接
-    daysEl.parentElement.addEventListener('click', () => {
-        window.open('https://chat.whatsapp.com/Ca4vxYoUXfw9o5qkQK9LfH', '_blank');
-    });
-    hoursEl.parentElement.addEventListener('click', () => {
-        window.open('https://www.facebook.com/profile.php?id=100076137814695&mibextid=wwXIfr&mibextid=wwXIfr', '_blank');
-    });
-    minutesEl.parentElement.addEventListener('click',  () => {
-        window.open('https://t.me/+tpGtShXErUg2OWY1', '_blank');
-    });
-    secondsEl.parentElement.addEventListener('click', () => {
-        window.open('https://discord.gg/96ePBBRKAs', '_blank');
-    });
+    // 计算天、小时、分钟、秒
+    const days = Math.floor(totalSeconds / (24 * 60 * 60));
+    const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
+    const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
+    const seconds = totalSeconds % 60;
 
-    // 每秒更新倒计时
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-});
+    // 更新页面显示
+    daysEl.textContent = days.toString().padStart(2, '0');
+    hoursEl.textContent = hours.toString().padStart(2, '0');
+    minutesEl.textContent = minutes.toString().padStart(2, '0');
+    secondsEl.textContent = seconds.toString().padStart(2, '0');
+
+    // 每秒减少1
+    totalSeconds--;
+
+    // 每秒更新一次
+    setTimeout(updateCountdown, 1000);
+}
+
+// 启动倒计时
+updateCountdown();
