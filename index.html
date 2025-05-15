@@ -4,50 +4,159 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primordial HQ²</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 5rem;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .countdown {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+        .countdown span {
+            display: inline-block;
+            min-width: 100px;
+            text-align: center;
+        }
+        .label {
+            font-size: 1.2rem;
+            margin-top: 5px;
+        }
+        .lrbilool {
+            font-size: 2rem;
+            margin: 20px 0;
+        }
+        .ended {
+            font-size: 2.5rem;
+            margin: 20px 0;
+        }
+        a {
+            color: red;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+            .countdown {
+                font-size: 1.5rem;
+            }
+            .countdown span {
+                min-width: 60px;
+            }
+            .label {
+                font-size: 1rem;
+            }
+            .lrbilool {
+                font-size: 1.5rem;
+            }
+            .ended {
+                font-size: 1.8rem;
+            }
+        }
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .countdown {
+                font-size: 1.2rem;
+            }
+            .countdown span {
+                min-width: 50px;
+            }
+            .label {
+                font-size: 0.8rem;
+            }
+            .lrbilool {
+                font-size: 1.2rem;
+            }
+            .ended {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Primordial HQ²</h1>
-        <div class="lrbilool-section">
-            <p id="lrbilool">lrbilool</p>
-            <div class="lrbilool-countdown">
-                <span id="lrbilool-days">1229</span>
-                <span class="separator">:</span>
-                <span id="lrbilool-hours">18</span>
-                <span class="separator">:</span>
-                <span id="lrbilool-minutes">02</span>
-                <span class="separator">:</span>
-                <span id="lrbilool-seconds">02</span>
-            </div>
+        <div id="countdown" class="countdown">
+            <span id="whatsapp">1229</span>:<span id="facebook">18</span>:<span id="telegram">04</span>:<span id="discord">14</span>
         </div>
-        <div class="countdown-section">
-            <div class="countdown">
-                <div class="time-unit">
-                    <span id="days">1229</span>
-                    <p>WhatsApp</p>
-                </div>
-                <span class="separator">:</span>
-                <div class="time-unit">
-                    <span id="hours">18</span>
-                    <p>Facebook</p>
-                </div>
-                <span class="separator">:</span>
-                <div class="time-unit">
-                    <span id="minutes">03</span>
-                    <p>Discord</p>
-                </div>
-                <span class="separator">:</span>
-                <div class="time-unit">
-                    <span id="seconds">18</span>
-                    <p>Telegram</p>
-                </div>
-            </div>
+        <div class="label">
+            <span>WhatsApp</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Facebook</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Telegram</span>&nbsp;&nbsp;&nbsp;&nbsp;
+            <span>Discord</span>
         </div>
-        <div id="marianas-web" style="display: none;">
-            <a href="https://t.me/+VPA1Aifge0w2ODVl">MarianasWeb</a>
+        <div class="lrbilool">lrbilool</div>
+        <div id="ended" class="ended" style="display: none;">
+            <a href="https://t.me/+VPA1Aifge0w2ODVl" target="_blank">MarianasWeb</a>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // 设置倒计时目标时间（以秒为单位）
+        let whatsapp = 1229; // 天
+        let facebook = 18;   // 小时
+        let telegram = 4;    // 分钟
+        let discord = 14;    // 秒
+
+        // 计算总秒数
+        let totalSeconds = whatsapp * 24 * 60 * 60 + facebook * 60 * 60 + telegram * 60 + discord;
+
+        // 更新倒计时显示
+        function updateCountdown() {
+            if (totalSeconds <= 0) {
+                // 倒计时结束，显示 MarianasWeb
+                document.getElementById('countdown').style.display = 'none';
+                document.querySelector('.label').style.display = 'none';
+                document.querySelector('.lrbilool').style.display = 'none';
+                document.getElementById('ended').style.display = 'block';
+                return;
+            }
+
+            // 计算剩余时间
+            const w = Math.floor(totalSeconds / (24 * 60 * 60)); // 天
+            const f = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)); // 小时
+            const t = Math.floor((totalSeconds % (60 * 60)) / 60); // 分钟
+            const d = totalSeconds % 60; // 秒
+
+            // 更新显示
+            document.getElementById('whatsapp').textContent = w.toString().padStart(2, '0');
+            document.getElementById('facebook').textContent = f.toString().padStart(2, '0');
+            document.getElementById('telegram').textContent = t.toString().padStart(2, '0');
+            document.getElementById('discord').textContent = d.toString().padStart(2, '0');
+
+            // 每秒减少
+            totalSeconds--;
+        }
+
+        // 每秒更新一次
+        setInterval(updateCountdown, 1000);
+        updateCountdown(); // 立即运行一次
+    </script>
 </body>
 </html>
