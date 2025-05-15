@@ -1,4 +1,4 @@
-// Matrix Digital Rain
+// Mortis-style Digital Rain
 const canvas = document.getElementById('matrix');
 const ctx = canvas.getContext('2d');
 
@@ -6,16 +6,16 @@ canvas.height = window.innerHeight;
 canvas.width = window.innerWidth;
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()_+-=[]{}|;:,.<>?';
-const fontSize = 14;
+const fontSize = 16;
 const columns = canvas.width / fontSize;
 const drops = [];
 
 for (let x = 0; x < columns; x++) {
-    drops[x] = 1;
+    drops[x] = Math.random() * canvas.height / fontSize;
 }
 
 function draw() {
-    ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+    ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     ctx.fillStyle = '#0f0';
@@ -23,16 +23,17 @@ function draw() {
 
     for (let i = 0; i < drops.length; i++) {
         const text = chars.charAt(Math.floor(Math.random() * chars.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        const y = drops[i] * fontSize;
+        ctx.fillText(text, i * fontSize, y);
 
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+        if (y > canvas.height && Math.random() > 0.98) {
             drops[i] = 0;
         }
         drops[i]++;
     }
 }
 
-setInterval(draw, 33);
+setInterval(draw, 50);
 
 window.addEventListener('resize', () => {
     canvas.height = window.innerHeight;
@@ -53,6 +54,27 @@ function typeTitle() {
 }
 
 window.addEventListener('load', typeTitle);
+
+// Counter Animation
+const targetDate = new Date('2025-12-31T23:59:59').getTime();
+
+function updateCounter() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('whatsapp').textContent = String(days).padStart(4, '0');
+    document.getElementById('facebook').textContent = String(hours).padStart(2, '0');
+    document.getElementById('telegram').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('discord').textContent = String(seconds).padStart(2, '0');
+}
+
+setInterval(updateCounter, 1000);
+window.addEventListener('load', updateCounter);
 
 // Terminal Typing Animation
 const terminalElement = document.getElementById('terminal-text');
