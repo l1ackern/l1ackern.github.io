@@ -1,4 +1,4 @@
-// 设置倒计时初始值（1229天18小时03分钟18秒）
+// 设置主倒计时初始值（1229天18小时03分钟18秒）
 let totalSeconds = (1229 * 24 * 60 * 60) + (18 * 60 * 60) + (3 * 60) + 18;
 
 const daysEl = document.getElementById('days');
@@ -8,11 +8,11 @@ const secondsEl = document.getElementById('seconds');
 const countdownEl = document.querySelector('.countdown');
 const marianasWebEl = document.getElementById('marianas-web');
 
+// 主倒计时更新
 function updateCountdown() {
     if (totalSeconds <= 0) {
-        // 倒计时结束，隐藏倒计时和社交标签，显示 MarianasWeb
+        // 倒计时结束，隐藏倒计时，显示 MarianasWeb
         countdownEl.style.display = 'none';
-        document.querySelector('.social-labels').style.display = 'none';
         marianasWebEl.style.display = 'block';
         return;
     }
@@ -36,5 +36,16 @@ function updateCountdown() {
     setTimeout(updateCountdown, 1000);
 }
 
-// 启动倒计时
+// lrbilool 倒计时（静态显示）
+const lrbiloolDaysEl = document.getElementById('lrbilool-days');
+const lrbiloolHoursEl = document.getElementById('lrbilool-hours');
+const lrbiloolMinutesEl = document.getElementById('lrbilool-minutes');
+const lrbiloolSecondsEl = document.getElementById('lrbilool-seconds');
+
+lrbiloolDaysEl.textContent = '1229';
+lrbiloolHoursEl.textContent = '18';
+lrbiloolMinutesEl.textContent = '02';
+lrbiloolSecondsEl.textContent = '02';
+
+// 启动主倒计时
 updateCountdown();
