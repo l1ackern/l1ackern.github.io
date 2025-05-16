@@ -10,27 +10,22 @@
             color: #00FF00; /* 绿色字体 */
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
-            height: 100vh;
-            box-sizing: border-box;
+            padding: 20px;
+            overflow: hidden;
         }
         #network-list {
             position: absolute;
-            top: 10px;
-            left: 10px;
+            top: 20px;
+            left: 20px;
             border: 2px solid #FF0000; /* 红框 */
             background-color: #000000;
-            padding: 8px;
+            padding: 10px;
             color: #FFFFFF; /* 白色字体 */
             font-size: 14px;
-            line-height: 1.2;
         }
         #network-list h2 {
-            margin: 0 0 8px 0;
-            font-size: 14px;
-            font-weight: normal;
+            margin: 0 0 10px 0;
+            font-size: 16px;
         }
         #network-list ul {
             list-style: none;
@@ -38,103 +33,35 @@
             margin: 0;
         }
         #network-list li {
-            margin-bottom: 4px;
+            margin-bottom: 5px;
         }
         #network-list li.selected {
             color: #00FFFF; /* 青色高亮 */
         }
         #head-container {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            text-align: right;
+            top: 20px;
+            right: 20px;
+            text-align: left; /* 改成左对齐 */
         }
         #pixel-head {
             width: 100px;
             height: 100px;
+            background-color: #FF4500; /* 橙红色 */
             image-rendering: pixelated; /* 像素风 */
         }
         #status {
-            margin-top: 5px;
-            font-size: 12px;
+            margin-top: 10px;
+            font-size: 14px;
             color: #00FF00;
-            line-height: 1.3;
+            text-align: left; /* 确保状态文本左对齐 */
         }
         #terminal {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            font-size: 12px;
+            bottom: 20px;
+            left: 20px;
+            font-size: 14px;
             color: #00FF00;
-            line-height: 1.4;
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            #network-list {
-                top: 5px;
-                left: 5px;
-                padding: 5px;
-                font-size: 12px;
-            }
-            #network-list h2 {
-                font-size: 12px;
-                margin-bottom: 5px;
-            }
-            #network-list li {
-                margin-bottom: 3px;
-            }
-            #head-container {
-                top: 5px;
-                right: 5px;
-            }
-            #pixel-head {
-                width: 80px;
-                height: 80px;
-            }
-            #status {
-                font-size: 10px;
-                margin-top: 3px;
-            }
-            #terminal {
-                bottom: 5px;
-                left: 5px;
-                font-size: 10px;
-                line-height: 1.3;
-            }
-        }
-        @media (max-width: 480px) {
-            #network-list {
-                top: 3px;
-                left: 3px;
-                padding: 3px;
-                font-size: 10px;
-            }
-            #network-list h2 {
-                font-size: 10px;
-                margin-bottom: 3px;
-            }
-            #network-list li {
-                margin-bottom: 2px;
-            }
-            #head-container {
-                top: 3px;
-                right: 3px;
-            }
-            #pixel-head {
-                width: 60px;
-                height: 60px;
-            }
-            #status {
-                font-size: 8px;
-                margin-top: 2px;
-            }
-            #terminal {
-                bottom: 3px;
-                left: 3px;
-                font-size: 8px;
-                line-height: 1.2;
-            }
         }
     </style>
 </head>
