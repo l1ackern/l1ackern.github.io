@@ -59,7 +59,7 @@
         }
         #terminal {
             position: absolute;
-            bottom: 2vw;
+            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
@@ -115,8 +115,7 @@
 
     <!-- 底部终端文本 -->
     <div id="terminal">
-        THE TRUE IDENTITY OF MARIANA WEB<br>
-        
+        The true identity of Mariana Web<br>
         .hack .chaos → .ChaosVPN<br>
         .loky → red sky network<br>
         .anon → Alienet<br>
