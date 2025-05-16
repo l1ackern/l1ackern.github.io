@@ -1,224 +1,44 @@
-* {
+body {
+    background-color: black;
+    color: #8B0000; /* 暗红色 */
+    font-family: 'Orbitron', sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    background-color: #000;
-    color: #8b0000;
-    font-family: Arial, sans-serif;
-    text-align: center;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .container {
-    max-width: 100%;
-    padding: 20px;
-    margin: 0 auto;
-    min-height: 100vh;
     position: relative;
-}
-
-h1 {
-    font-size: 5rem;
-    position: absolute;
-    top: 10%;
-    width: 100%;
-    text-transform: uppercase;
-}
-
-.lrbilool-section {
-    position: absolute;
-    top: 45%;
-    width: 100%;
-    transform: translateY(-50%);
-}
-
-#lrbilool {
-    font-size: 2rem;
-    margin-bottom: 15px;
-}
-
-.lrbilool-countdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-.lrbilool-countdown .separator {
-    font-size: 2rem;
-    margin: 0 3px;
-    width: 10px;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-}
-
-.countdown-section {
-    position: absolute;
-    top: 75%;
-    width: 100%;
-}
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.time-unit {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 80px;
+    justify-content: flex-start;
 }
 
-.time-unit span {
-    font-size: 3rem;
-    font-weight: bold;
-}
-
-.time-unit p {
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
-
-.separator {
-    font-size: 3rem;
-    margin: 0 3px;
-    width: 10px;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-}
-
-#marianas-web {
+.ascii-art {
     position: absolute;
-    top: 75%;
-    width: 100%;
+    top: 20px;
+    right: 20px;
+    color: #FF0000; /* 亮红色 */
+    font-size: 12px;
+    line-height: 1;
 }
 
-#marianas-web a {
-    color: #8b0000;
-    font-size: 2.5rem;
-    text-decoration: none;
-    font-weight: bold;
+.content {
+    margin-top: 150px;
+    text-align: center;
 }
 
-#marianas-web a:hover {
-    text-decoration: underline;
+.red {
+    color: #FF0000; /* 亮红色 */
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 3rem;
-        top: 8%;
-    }
-
-    .lrbilool-section {
-        top: 40%;
-    }
-
-    #lrbilool {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-    }
-
-    .lrbilool-countdown {
-        font-size: 1.5rem;
-    }
-
-    .lrbilool-countdown .separator {
-        font-size: 1.5rem;
-        margin: 0 2px;
-        width: 8px;
-    }
-
-    .countdown-section {
-        top: 70%;
-    }
-
-    .time-unit span {
-        font-size: 2rem;
-    }
-
-    .time-unit p {
-        font-size: 1rem;
-    }
-
-    .separator {
-        font-size: 2rem;
-        margin: 0 2px;
-        width: 8px;
-    }
-
-    #marianas-web {
-        top: 70%;
-    }
-
-    #marianas-web a {
-        font-size: 1.8rem;
-    }
+.green {
+    color: #00FF00; /* 绿色 */
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2rem;
-        top: 5%;
-    }
-
-    .lrbilool-section {
-        top: 35%;
-    }
-
-    #lrbilool {
-        font-size: 1.2rem;
-        margin-bottom: 8px;
-    }
-
-    .lrbilool-countdown {
-        font-size: 1.2rem;
-    }
-
-    .lrbilool-countdown .separator {
-        font-size: 1.2rem;
-        margin: 0 1px;
-        width: 6px;
-    }
-
-    .countdown-section {
-        top: 65%;
-    }
-
-    .time-unit {
-        min-width: 60px;
-    }
-
-    .time-unit span {
-        font-size: 1.5rem;
-    }
-
-    .time-unit p {
-        font-size: 0.8rem;
-    }
-
-    .separator {
-        font-size: 1.5rem;
-        margin: 0 1px;
-        width: 6px;
-    }
-
-    #marianas-web {
-        top: 65%;
-    }
-
-    #marianas-web a {
-        font-size: 1.5rem;
-    }
+p {
+    font-size: 24px;
+    margin: 10px 0;
 }
