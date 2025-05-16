@@ -106,10 +106,10 @@
     <div id="head-container">
         <img id="pixel-head" src="pixel-head.png" alt="Pixel Head">
         <div id="status">
-            WEBSITE OWNER: LRBILOOL<br>
             ONLINE STATUS: ONLINE<br>
+            ACCESS LEVEL: 4<br>
             PRIVACY: 0<br>
-            LAST CHECKED: 01/24/20 08:16:50 AM
+            BEIJING TIME: <span id="beijing-time">05/16/25 00:00:51 AM</span>
         </div>
     </div>
 
@@ -134,5 +134,34 @@
         📨 E-mail<br>
         ⮕ <a href="mailto:lrbilool@disroot.org">lrbilool@disroot.org</a><br><br>
     </div>
+
+    <!-- JavaScript 实时更新北京时间 -->
+    <script>
+        function updateBeijingTime() {
+            const now = new Date();
+            // 北京时间是 UTC+8，调整时间
+            const beijingOffset = 8 * 60; // 北京时间比 UTC 快 8 小时（分钟计算）
+            const localOffset = now.getTimezoneOffset(); // 本地时区偏移（分钟）
+            const beijingTime = new Date(now.getTime() + (beijingOffset + localOffset) * 60 * 1000);
+
+            // 格式化日期和时间
+            const month = String(beijingTime.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始，所以 +1
+            const day = String(beijingTime.getDate()).padStart(2, '0');
+            const year = String(beijingTime.getFullYear()).slice(-2); // 取后两位年份
+            const hours = beijingTime.getHours();
+            const minutes = String(beijingTime.getMinutes()).padStart(2, '0');
+            const seconds = String(beijingTime.getSeconds()).padStart(2, '0');
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            const formattedHours = String(hours % 12 || 12).padStart(2, '0'); // 转成 12 小时制
+
+            // 拼接格式：MM/DD/YY HH:MM:SS AM/PM
+            const timeString = `${month}/${day}/${year} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
+            document.getElementById('beijing-time').textContent = timeString;
+        }
+
+        // 每秒更新时间
+        setInterval(updateBeijingTime, 1000);
+        updateBeijingTime(); // 立即执行一次
+    </script>
 </body>
 </html>
