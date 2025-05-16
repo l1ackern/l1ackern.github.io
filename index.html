@@ -10,22 +10,23 @@
             color: #00FF00; /* 绿色字体 */
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 20px;
-            overflow: hidden;
+            padding: 2vw; /* 用 vw 自适应 */
+            overflow-x: hidden; /* 防止横向滚动 */
+            box-sizing: border-box;
         }
         #network-list {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 2vw;
+            left: 2vw;
             border: 2px solid #FF0000; /* 红框 */
             background-color: #000000;
-            padding: 10px;
+            padding: 1vw;
             color: #FFFFFF; /* 白色字体 */
-            font-size: 14px;
+            font-size: clamp(12px, 1.5vw, 14px); /* 自适应字体大小 */
         }
         #network-list h2 {
-            margin: 0 0 10px 0;
-            font-size: 16px;
+            margin: 0 0 1vw 0;
+            font-size: clamp(14px, 1.8vw, 16px);
         }
         #network-list ul {
             list-style: none;
@@ -33,35 +34,36 @@
             margin: 0;
         }
         #network-list li {
-            margin-bottom: 5px;
+            margin-bottom: 0.5vw;
         }
         #network-list li.selected {
             color: #00FFFF; /* 青色高亮 */
         }
         #head-container {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 2vw;
+            right: 2vw;
             text-align: left; /* 左对齐 */
         }
         #pixel-head {
-            width: 100px;
-            height: 100px;
+            width: clamp(80px, 10vw, 100px); /* 自适应图片大小 */
+            height: clamp(80px, 10vw, 100px);
             background-color: #FF4500; /* 橙红色 */
             image-rendering: pixelated; /* 像素风 */
         }
         #status {
-            margin-top: 10px;
-            font-size: 14px;
+            margin-top: 1vw;
+            font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
             text-align: left; /* 左对齐 */
         }
         #terminal {
             position: absolute;
-            bottom: 20px;
-            left: 20px;
-            font-size: 14px;
+            bottom: 2vw;
+            left: 2vw;
+            font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
+            width: 90%; /* 限制宽度，防止溢出 */
         }
         #terminal a {
             color: #00FF00; /* 链接保持绿色 */
@@ -69,6 +71,22 @@
         }
         #terminal a:hover {
             color: #00FFFF; /* 鼠标悬停变青色 */
+        }
+        /* 手机端调整 */
+        @media (max-width: 768px) {
+            #network-list {
+                position: static;
+                margin-bottom: 2vw;
+            }
+            #head-container {
+                position: static;
+                text-align: center;
+                margin: 2vw 0;
+            }
+            #terminal {
+                position: static;
+                margin-top: 2vw;
+            }
         }
     </style>
 </head>
@@ -115,12 +133,6 @@
         ⮕ <a href="https://x.com/l1ackern?s=21" target="_blank">https://x.com/l1ackern?s=21</a><br>
         📨 E-mail<br>
         ⮕ <a href="mailto:lrbilool@disroot.org">lrbilool@disroot.org</a><br><br>
-        USER: PROXY-KALI<br>
-        ADDRESS: X86_64<br>
-        KALI_ROLLING:CENTRAL-NODES<br>
-        ENVIRONMENT SET TO: VNVIRTUALBOX<br><br>
-        Ctrl Key to navigate, Left Arrow to go back (Press 'q' to Exit)<br>
-        Control Nodes 5.3 build 5310 - developer mode - pre-alpha_0.4
     </div>
 </body>
 </html>
