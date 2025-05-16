@@ -1,31 +1,22 @@
 function startCountdown() {
-    // 设置初始时间（1228天 21小时 50分钟 00秒）
-    let totalSeconds = (1228 * 24 * 60 * 60) + (21 * 60 * 60) + (50 * 60);
-
+    let time = 1228 * 3600 * 24 + 21 * 3600 + 50 * 60; // 初始时间转换为秒
     const countdownElement = document.getElementById('countdown');
 
-    function updateCountdown() {
-        if (totalSeconds <= 0) {
-            countdownElement.textContent = '00:00:00:00';
-            return;
-        }
+    setInterval(() => {
+        time--;
+        if (time < 0) time = 0; // 防止负数
 
-        totalSeconds--;
-
-        const days = Math.floor(totalSeconds / (24 * 60 * 60));
-        const hours = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60));
-        const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
-        const seconds = totalSeconds % 60;
+        const days = Math.floor(time / (3600 * 24));
+        const hours = Math.floor((time % (3600 * 24)) / 3600);
+        const minutes = Math.floor((time % 3600) / 60);
+        const seconds = time % 60;
 
         countdownElement.textContent = `${days}:${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
-    }
-
-    function pad(num) {
-        return num < 10 ? `0${num}` : num;
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+    }, 1000);
 }
 
-window.onload = startCountdown;
+function pad(num) {
+    return num < 10 ? `0${num}` : num;
+}
+
+startCountdown();
