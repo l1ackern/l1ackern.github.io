@@ -1,69 +1,31 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary Head Site</title>
-    <style>
-        body {
-            background-color: black;
-            color: #8B0000; /* 暗红色字体 */
-            font-family: 'Courier New', monospace; /* 等宽字体，适合二进制风格 */
-            margin: 0;
-            padding: 20px;
-        }
-        .binary-head {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: red; /* 红色人头 */
-            font-size: 12px;
-            line-height: 1;
-            white-space: pre;
-        }
-        .content {
-            margin-top: 150px; /* 留出空间给右上角人头 */
-            text-align: left;
-        }
-        .owner {
-            color: red;
-        }
-        .owner-name {
-            color: green;
-        }
-        .network, .hq {
-            color: red;
-        }
-    </style>
+    <title>lrbilool's Primordial HQ</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- 二进制风格人头 -->
-    <pre class="binary-head">
-0000000  11111  0000000
-0000000 1111111 0000000
-00000001111111110000000
-00000111111111111000000
-00001111111111111100000
-00011111100001111110000
-00111111000000111111000
-01111111000000111111100
-11111111100001111111110
-11111111111111111111110
-11111111111111111111110
-01111111111111111111100
-00111111111111111111000
-00011111111111111110000
-00001111111111111100000
-00000111111111111000000
-00000011111111110000000
-00000001111111100000000
-    </pre>
-
-    <!-- 主体内容 -->
-    <div class="content">
-        <p><span class="owner">网站所有者</span>：<span class="owner-name">lrbilool</span></p>
-        <p class="network">Сеть уровня 9: 4</p>
-        <p class="hq">Primordial HQ²：1228:21:50:00</p>
+    <div class="container">
+        <div class="ascii-art">
+            <!-- 二进制方块人头艺术 -->
+            <pre>
+            <span class="red">01010101</span>
+            <span class="red">10101010</span>
+            <span class="red">11001100</span>
+            <span class="red">00110011</span>
+            <span class="red">01100110</span>
+            <span class="red">10011001</span>
+            </pre>
+        </div>
+        <div class="content">
+            <p><span class="red">网站所有者</span>: <span class="green">lrbilool</span></p>
+            <p><span class="red">Сеть уровня 9</span>: <span class="red">4</span></p>
+            <p><span class="red">Primordial HQ²</span>: <span class="red" id="countdown">1228:21:50:00</span></p>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
