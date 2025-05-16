@@ -1,62 +1,108 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>红色方块人头</title>
+    <title>操蛋的黑客界面</title>
     <style>
         body {
             background-color: #000000;
-            color: #8B0000; /* 暗红色字体 */
-            font-family: Arial, sans-serif;
+            color: #00FF00; /* 绿色字体 */
+            font-family: 'Courier New', Courier, monospace;
             margin: 0;
+            padding: 20px;
             overflow: hidden;
         }
-        #head {
+        #network-list {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 50px;
-            height: 50px;
-            background-color: #FF0000; /* 纯红色方块 */
-            border: 2px solid #000000;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-        #eye1, #eye2 {
-            position: absolute;
-            width: 8px;
-            height: 8px;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #FF0000; /* 红框 */
             background-color: #000000;
-            border-radius: 50%;
+            padding: 10px;
+            color: #FFFFFF; /* 白色字体 */
+            font-size: 14px;
         }
-        #eye1 {
-            top: 15px;
-            left: 10px;
+        #network-list h2 {
+            margin: 0 0 10px 0;
+            font-size: 16px;
         }
-        #eye2 {
-            top: 15px;
-            left: 30px;
+        #network-list ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
-        #mouth {
+        #network-list li {
+            margin-bottom: 5px;
+        }
+        #network-list li.selected {
+            color: #00FFFF; /* 青色高亮 */
+        }
+        #head-container {
             position: absolute;
-            top: 30px;
-            left: 15px;
-            width: 20px;
-            height: 5px;
-            background-color: #000000;
+            top: 20px;
+            right: 20px;
+            text-align: right;
         }
-        h1 {
-            text-align: center;
-            margin-top: 20%;
+        #pixel-head {
+            width: 100px;
+            height: 100px;
+            background-color: #FF4500; /* 橙红色 */
+            image-rendering: pixelated; /* 像素风 */
+        }
+        #status {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #00FF00;
+        }
+        #terminal {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 14px;
+            color: #00FF00;
         }
     </style>
 </head>
 <body>
-    <div id="head">
-        <div id="eye1"></div>
-        <div id="eye2"></div>
-        <div id="mouth"></div>
+    <!-- 左侧网络列表 -->
+    <div id="network-list">
+        <h2>END NETWORK LIST</h2>
+        <ul>
+            <li>3nigma-NET</li>
+            <li>FIELD-TF</li>
+            <li>LIFE Network</li>
+            <li class="selected">> LLL</li>
+        </ul>
     </div>
-    <h1>欢迎体验这操蛋的红色方块人头！</h1>
+
+    <!-- 右侧像素人头和状态 -->
+    <div id="head-container">
+        <img id="pixel-head" src="https://via.placeholder.com/100x100/FF4500/000000?text=PixelHead" alt="Pixel Head">
+        <div id="status">
+            ONLINE STATUS: ONLINE<br>
+            ACCESS LEVEL: 4<br>
+            PRIVACY: 0<br>
+            LAST CHECKED: 01/24/20 08:16:50 AM
+        </div>
+    </div>
+
+    <!-- 底部终端文本 -->
+    <div id="terminal">
+        USER: PROXY-KALI<br>
+        ADDRESS: X86_64<br>
+        KALI_ROLLING:CENTRAL-NODES<br>
+        ENVIRONMENT SET TO: VNVIRTUALBOX<br><br>
+        Ctrl Key to navigate, Left Arrow to go back (Press 'q' to Exit)<br>
+        Control Nodes 5.3 build 5310 - developer mode - pre-alpha_0.4
+    </div>
+
+    <script>
+        // 动态闪烁效果（可选）
+        const status = document.getElementById('status');
+        setInterval(() => {
+            status.style.visibility = status.style.visibility === 'hidden' ? 'visible' : 'hidden';
+        }, 500);
+    </script>
 </body>
 </html>
