@@ -1,162 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primordial HQ²</title>
+    <title>Binary Head Site</title>
     <style>
         body {
             background-color: black;
-            color: red;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            color: #8B0000; /* 暗红色字体 */
+            font-family: 'Courier New', monospace; /* 等宽字体，适合二进制风格 */
             margin: 0;
-            padding: 0;
-            overflow-x: hidden;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            min-height: 100vh;
             padding: 20px;
         }
-        h1 {
-            font-size: 5rem;
-            margin: 20px 0;
-            line-height: 1.2;
+        .binary-head {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: red; /* 红色人头 */
+            font-size: 12px;
+            line-height: 1;
+            white-space: pre;
         }
-        .countdown {
-            font-size: 2.5rem;
-            margin: 20px 0;
+        .content {
+            margin-top: 150px; /* 留出空间给右上角人头 */
+            text-align: left;
         }
-        .countdown span {
-            display: inline-block;
-            min-width: 100px;
-            text-align: center;
-        }
-        .label {
-            font-size: 1.2rem;
-            margin-top: 5px;
-        }
-        .lrbilool {
-            font-size: 2rem;
-            margin: 20px 0;
-        }
-        .ended {
-            font-size: 2.5rem;
-            margin: 20px 0;
-        }
-        a {
+        .owner {
             color: red;
-            text-decoration: none;
         }
-        a:hover {
-            text-decoration: underline;
+        .owner-name {
+            color: green;
         }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 3rem;
-            }
-            .countdown {
-                font-size: 1.5rem;
-            }
-            .countdown span {
-                min-width: 60px;
-            }
-            .label {
-                font-size: 1rem;
-            }
-            .lrbilool {
-                font-size: 1.5rem;
-            }
-            .ended {
-                font-size: 1.8rem;
-            }
-        }
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .countdown {
-                font-size: 1.2rem;
-            }
-            .countdown span {
-                min-width: 50px;
-            }
-            .label {
-                font-size: 0.8rem;
-            }
-            .lrbilool {
-                font-size: 1.2rem;
-            }
-            .ended {
-                font-size: 1.5rem;
-            }
+        .network, .hq {
+            color: red;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Primordial HQ²</h1>
-        <div id="countdown" class="countdown">
-            <span id="whatsapp">1229</span>:<span id="facebook">18</span>:<span id="telegram">04</span>:<span id="discord">14</span>
-        </div>
-        <div class="label">
-            <span>WhatsApp</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>Facebook</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>Telegram</span>&nbsp;&nbsp;&nbsp;&nbsp;
-            <span>Discord</span>
-        </div>
-        <div class="lrbilool">lrbilool</div>
-        <div id="ended" class="ended" style="display: none;">
-            <a href="https://t.me/+VPA1Aifge0w2ODVl" target="_blank">MarianasWeb</a>
-        </div>
+    <!-- 二进制风格人头 -->
+    <pre class="binary-head">
+0000000  11111  0000000
+0000000 1111111 0000000
+00000001111111110000000
+00000111111111111000000
+00001111111111111100000
+00011111100001111110000
+00111111000000111111000
+01111111000000111111100
+11111111100001111111110
+11111111111111111111110
+11111111111111111111110
+01111111111111111111100
+00111111111111111111000
+00011111111111111110000
+00001111111111111100000
+00000111111111111000000
+00000011111111110000000
+00000001111111100000000
+    </pre>
+
+    <!-- 主体内容 -->
+    <div class="content">
+        <p><span class="owner">网站所有者</span>：<span class="owner-name">lrbilool</span></p>
+        <p class="network">Сеть уровня 9: 4</p>
+        <p class="hq">Primordial HQ²：1228:21:50:00</p>
     </div>
-
-    <script>
-        // 设置倒计时目标时间（以秒为单位）
-        let whatsapp = 1229; // 天
-        let facebook = 18;   // 小时
-        let telegram = 4;    // 分钟
-        let discord = 14;    // 秒
-
-        // 计算总秒数
-        let totalSeconds = whatsapp * 24 * 60 * 60 + facebook * 60 * 60 + telegram * 60 + discord;
-
-        // 更新倒计时显示
-        function updateCountdown() {
-            if (totalSeconds <= 0) {
-                // 倒计时结束，显示 MarianasWeb
-                document.getElementById('countdown').style.display = 'none';
-                document.querySelector('.label').style.display = 'none';
-                document.querySelector('.lrbilool').style.display = 'none';
-                document.getElementById('ended').style.display = 'block';
-                return;
-            }
-
-            // 计算剩余时间
-            const w = Math.floor(totalSeconds / (24 * 60 * 60)); // 天
-            const f = Math.floor((totalSeconds % (24 * 60 * 60)) / (60 * 60)); // 小时
-            const t = Math.floor((totalSeconds % (60 * 60)) / 60); // 分钟
-            const d = totalSeconds % 60; // 秒
-
-            // 更新显示
-            document.getElementById('whatsapp').textContent = w.toString().padStart(2, '0');
-            document.getElementById('facebook').textContent = f.toString().padStart(2, '0');
-            document.getElementById('telegram').textContent = t.toString().padStart(2, '0');
-            document.getElementById('discord').textContent = d.toString().padStart(2, '0');
-
-            // 每秒减少
-            totalSeconds--;
-        }
-
-        // 每秒更新一次
-        setInterval(updateCountdown, 1000);
-        updateCountdown(); // 立即运行一次
-    </script>
 </body>
 </html>
