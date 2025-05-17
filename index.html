@@ -46,10 +46,12 @@
             text-align: left; /* 左对齐 */
         }
         #pixel-head {
-            width: clamp(100px, 12vw, 150px); /* 自适应图片大小，调大 */
-            height: clamp(100px, 12vw, 150px); /* 自适应图片大小，调大 */
-            background-color: #FF4500; /* 橙红色 */
+            max-width: clamp(150px, 20vw, 200px); /* 限制最大宽度，自适应 */
+            max-height: clamp(120px, 16vw, 161px); /* 限制最大高度，保持比例 */
+            aspect-ratio: 1280 / 1031; /* 保持图片原始比例 1280x1031 */
+            background-color: #FF4500; /* 橙红色，备用背景 */
             image-rendering: pixelated; /* 像素风 */
+            object-fit: contain; /* 确保图片按比例缩放，不变形 */
         }
         #status {
             margin-top: 1vw;
