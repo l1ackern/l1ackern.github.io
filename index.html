@@ -52,6 +52,7 @@
             background-color: #FF4500; /* 橙红色，备用背景 */
             image-rendering: pixelated; /* 像素风 */
             object-fit: contain; /* 确保图片按比例缩放，不变形 */
+            cursor: pointer; /* 鼠标悬停显示手型 */
         }
         #status {
             margin-top: 0.5vw; /* 调小 margin-top，离图片更近 */
@@ -61,6 +62,13 @@
         }
         #status .red-text {
             color: #FF0000; /* 红色字体 */
+        }
+        #status .red-text a {
+            color: #FF0000; /* 保持链接颜色为红色 */
+            text-decoration: none; /* 去掉下划线 */
+        }
+        #status .red-text a:hover {
+            color: #00FFFF; /* 鼠标悬停变青色 */
         }
         #status .time-spacing {
             margin-top: 1vw; /* 给 BEIJING TIME 和 Tor 之间加间距 */
@@ -119,9 +127,11 @@
 
     <!-- 右侧像素人头和状态 -->
     <div id="head-container">
-        <img id="pixel-head" src="pixel-head.png" alt="Pixel Head">
+        <a href="https://www.torproject.org/" target="_blank">
+            <img id="pixel-head" src="pixel-head.png" alt="Pixel Head">
+        </a>
         <div id="status">
-            Website Owner: <span class="red-text">LRBILOOL</span><br>
+            Website Owner: <span class="red-text"><a href="https://t.me/+yGM41xlVN9ZjMGNl" target="_blank">LRBILOOL</a></span><br>
             Privacy: 0<br>
             Tor: 0<br>
             <div class="time-spacing">
