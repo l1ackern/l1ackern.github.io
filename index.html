@@ -75,7 +75,7 @@
         }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
+            bottom: calc(2vw + 20px); /* 原位置不动 */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
@@ -85,7 +85,7 @@
             color: #FF0000; /* 红色字体 */
             font-weight: bold; /* 加粗 */
             position: absolute; /* 单独定位 */
-            bottom: calc(2vw + 40px); /* 再往上 20px（2cm） */
+            bottom: calc(2vw + 60px); /* 再往上 20px，总共上移 40px（2cm + 2cm） */
             left: 0;
         }
         #terminal .network-list {
