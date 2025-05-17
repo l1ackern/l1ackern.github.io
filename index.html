@@ -75,20 +75,11 @@
         }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 20px); /* 原位置不变 */
+            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
             width: 90%; /* 限制宽度，防止溢出 */
-        }
-        #terminal-header {
-            position: absolute;
-            bottom: calc(2vw + 40px); /* 比 #terminal 上移 20px（约 2cm） */
-            left: 2vw;
-            font-size: clamp(12px, 1.5vw, 14px);
-            color: #FF0000; /* 红色字体 */
-            font-weight: bold; /* 加粗 */
-            width: 90%; /* 保持和 #terminal 一样的宽度 */
         }
         #terminal a {
             color: #00FF00; /* 链接保持绿色 */
@@ -111,10 +102,6 @@
             #terminal {
                 position: static;
                 margin-top: 2vw;
-            }
-            #terminal-header {
-                position: static;
-                margin-bottom: 1vw; /* 手机端调整间距 */
             }
         }
     </style>
@@ -154,11 +141,10 @@
     </div>
 
     <!-- 底部终端文本 -->
-    <div id="terminal-header">
-        Enter the Deepest Darkest Internet Abyss LION777 Node Database 7 Users<br>
-        |View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.|<br><br>
-    </div>
     <div id="terminal">
+        Enter the Deepest Darkest Internet Abyss LION777 Node Database 7 Users<br><br>
+        I just don’t know what this is exactly maybe I'm not supposed to be here.<br><br>
+        |View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.|<br><br>
         [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
         [DarkNet TOR only] .onion<br>
         [Freenet IP and addresses]<br>
