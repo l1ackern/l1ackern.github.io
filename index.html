@@ -73,22 +73,22 @@
         #status .time-spacing {
             margin-top: 1vw; /* 给 BEIJING TIME 和 Tor 之间加间距 */
         }
-        #warning {
-            position: absolute;
-            bottom: calc(2vw + 60px); /* 和之前一致，相对于页面底部 */
-            left: 2vw;
-            font-size: clamp(12px, 1.5vw, 14px);
-            color: #FF0000; /* 红色字体 */
-            font-weight: bold; /* 加粗 */
-            width: 90%; /* 和 #terminal 宽度一致 */
-        }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 20px); /* 原位置不动 */
+            bottom: calc(2vw + 20px); /* 原位置不变 */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
             width: 90%; /* 限制宽度，防止溢出 */
+        }
+        #terminal-header {
+            position: absolute;
+            bottom: calc(2vw + 40px); /* 比 #terminal 上移 20px（约 2cm） */
+            left: 2vw;
+            font-size: clamp(12px, 1.5vw, 14px);
+            color: #FF0000; /* 红色字体 */
+            font-weight: bold; /* 加粗 */
+            width: 90%; /* 保持和 #terminal 一样的宽度 */
         }
         #terminal a {
             color: #00FF00; /* 链接保持绿色 */
@@ -108,13 +108,13 @@
                 text-align: center;
                 margin: 2vw 0;
             }
-            #warning {
-                position: static; /* 手机端取消绝对定位 */
-                margin-bottom: 1em;
-            }
             #terminal {
                 position: static;
-                margin-top: 1em;
+                margin-top: 2vw;
+            }
+            #terminal-header {
+                position: static;
+                margin-bottom: 1vw; /* 手机端调整间距 */
             }
         }
     </style>
@@ -148,17 +148,16 @@
             Privacy: 0<br>
             Tor: 0<br>
             <div class="time-spacing">
-                BEIJING TIME: <span id="beijing-time">05/17/25 03:14:<span class="red-text">00</span> PM</span>
+                BEIJING TIME: <span id="beijing-time">05/16/25 00:00:<span class="red-text">51</span> AM</span>
             </div>
         </div>
     </div>
 
-    <!-- 警告文本 -->
-    <div id="warning">
-        🚫 Enter the Deepest Darkest Internet Abyss LION777 Node Database. View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.
-    </div>
-
     <!-- 底部终端文本 -->
+    <div id="terminal-header">
+        Enter the Deepest Darkest Internet Abyss LION777 Node Database 7 Users<br>
+        |View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.|<br><br>
+    </div>
     <div id="terminal">
         [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
         [DarkNet TOR only] .onion<br>
