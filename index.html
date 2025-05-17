@@ -75,7 +75,7 @@
         }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 40px); /* 原 2vw + 20px 再加 20px，往上移 2cm */
+            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
@@ -84,6 +84,12 @@
         #terminal .warning {
             color: #FF0000; /* 红色字体 */
             font-weight: bold; /* 加粗 */
+            position: absolute; /* 单独定位 */
+            bottom: calc(2vw + 40px); /* 再往上 20px（2cm） */
+            left: 0;
+        }
+        #terminal .network-list {
+            margin-top: 2em; /* 留出空间，确保列表位置不动 */
         }
         #terminal a {
             color: #00FF00; /* 链接保持绿色 */
@@ -106,6 +112,13 @@
             #terminal {
                 position: static;
                 margin-top: 2vw;
+            }
+            #terminal .warning {
+                position: static; /* 手机端取消绝对定位 */
+                margin-bottom: 1em;
+            }
+            #terminal .network-list {
+                margin-top: 0; /* 手机端调整间距 */
             }
         }
     </style>
@@ -146,17 +159,21 @@
 
     <!-- 底部终端文本 -->
     <div id="terminal">
-        <span class="warning">Enter the Deepest Darkest Internet Abyss LION777 Node Database. View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.</span><br>
-        [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
-        [DarkNet TOR only] .onion<br>
-        [Freenet IP and addresses]<br>
-        [ChaosVPN] .hack<br>
-        [OpenNIC] .bbs .bit .chan .cyb .free .dyn .geek .gopher .indy .libre .null .o .oss .oz .neo .parody .pirate<br>
-        [AnoNet] .ano<br>
-        [AlieNet] .anon<br>
-        [Misc.] .i2p .dn42 .0net<br>
-        [Polaris]<br>
-        [Last Login: X0A0]|Archived and Educational Purposes Only. |<br><br>
+        <div class="warning">
+            🚫 Enter the Deepest Darkest Internet Abyss LION777 Node Database. View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.
+        </div>
+        <div class="network-list">
+            [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
+            [DarkNet TOR only] .onion<br>
+            [Freenet IP and addresses]<br>
+            [ChaosVPN] .hack<br>
+            [OpenNIC] .bbs .bit .chan .cyb .free .dyn .geek .gopher .indy .libre .null .o .oss .oz .neo .parody .pirate<br>
+            [AnoNet] .ano<br>
+            [AlieNet] .anon<br>
+            [Misc.] .i2p .dn42 .0net<br>
+            [Polaris]<br>
+            [Last Login: X0A0]|Archived and Educational Purposes Only. |<br><br>
+        </div>
     </div>
 
     <!-- JavaScript 实时更新北京时间 -->
