@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primordial HQ²</title>
+    <title>LION777 Node</title>
     <style>
         body {
             background-color: #000000;
@@ -75,11 +75,15 @@
         }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
+            bottom: calc(2vw + 40px); /* 原 2vw + 20px 再加 20px，往上移 2cm */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
             width: 90%; /* 限制宽度，防止溢出 */
+        }
+        #terminal .warning {
+            color: #FF0000; /* 红色字体 */
+            font-weight: bold; /* 加粗 */
         }
         #terminal a {
             color: #00FF00; /* 链接保持绿色 */
@@ -142,7 +146,7 @@
 
     <!-- 底部终端文本 -->
     <div id="terminal">
-        Enter the Deepest Darkest Internet Abyss LION777 Node Database. View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.<br>
+        <span class="warning">Enter the Deepest Darkest Internet Abyss LION777 Node Database. View at own risk. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.</span><br>
         [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
         [DarkNet TOR only] .onion<br>
         [Freenet IP and addresses]<br>
