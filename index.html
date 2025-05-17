@@ -54,10 +54,16 @@
             object-fit: contain; /* 确保图片按比例缩放，不变形 */
         }
         #status {
-            margin-top: 1vw;
+            margin-top: 0.5vw; /* 调小 margin-top，离图片更近 */
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
             text-align: left; /* 左对齐 */
+        }
+        #status .red-text {
+            color: #FF0000; /* 红色字体 */
+        }
+        #status .time-spacing {
+            margin-top: 1vw; /* 给 BEIJING TIME 和 Tor 之间加间距 */
         }
         #terminal {
             position: absolute;
@@ -97,7 +103,7 @@
     <div id="network-list">
         <h2>END NETWORK LIST</h2>
         <ul>
-            <li>MarianasWeb</li>
+            <li>3nigma-NET</li>
             <li>FIELD-TF</li>
             <li>LIFE Network</li>
             <li class="selected">> Сеть уровня 9</li>
@@ -108,10 +114,12 @@
     <div id="head-container">
         <img id="pixel-head" src="pixel-head.png" alt="Pixel Head">
         <div id="status">
-            Website Owner: LRBILOOL<br>
+            Website Owner: <span class="red-text">LRBILOOL</span><br>
             Privacy: 0<br>
-            Tor    : 0<br>
-            BEIJING TIME: <span id="beijing-time">05/16/25 00:00:51 AM</span><p>
+            Tor: 0<br>
+            <div class="time-spacing">
+                BEIJING TIME: <span id="beijing-time">05/16/25 00:00:<span class="red-text">51</span> AM</span>
+            </div>
         </div>
     </div>
 
@@ -146,8 +154,8 @@
             const formattedHours = String(hours % 12 || 12).padStart(2, '0'); // 转成 12 小时制
 
             // 拼接格式：MM/DD/YY HH:MM:SS AM/PM
-            const timeString = `${month}/${day}/${year} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
-            document.getElementById('beijing-time').textContent = timeString;
+            const timeString = `${month}/${day}/${year} ${formattedHours}:${minutes}:<span class="red-text">${seconds}</span> ${ampm}`;
+            document.getElementById('beijing-time').innerHTML = timeString;
         }
 
         // 每秒更新时间
