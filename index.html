@@ -3,39 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AbyssNet LION777 Gateway</title>
+    <title>LION777 Node</title>
     <style>
         body {
-            background: linear-gradient(45deg, #000000, #1a1a1a, #000000); /* 背景渐变动画 */
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
+            background-color: #000000;
             color: #00FF00; /* 绿色字体 */
             font-family: 'Courier New', Courier, monospace;
             margin: 0;
-            padding: 2vw;
-            overflow-x: hidden;
+            padding: 2vw; /* 用 vw 自适应 */
+            overflow-x: hidden; /* 防止横向滚动 */
             box-sizing: border-box;
-        }
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
         #network-list {
             position: absolute;
             top: 2vw;
             left: 2vw;
-            border: 2px solid #FF0000;
-            background-color: rgba(0, 0, 0, 0.9);
+            border: 2px solid #FF0000; /* 红框 */
+            background-color: #000000;
             padding: 1vw;
-            color: #FFFFFF;
-            font-size: clamp(12px, 1.5vw, 14px);
-            box-shadow: 0 0 10px #FF0000; /* 红框发光 */
+            color: #FFFFFF; /* 白色字体 */
+            font-size: clamp(12px, 1.5vw, 14px); /* 自适应字体大小 */
         }
         #network-list h2 {
             margin: 0 0 1vw 0;
             font-size: clamp(14px, 1.8vw, 16px);
-            text-shadow: 0 0 5px #FF0000; /* 标题发光 */
         }
         #network-list ul {
             list-style: none;
@@ -44,86 +35,71 @@
         }
         #network-list li {
             margin-bottom: 0.5vw;
-            cursor: pointer;
         }
         #network-list li a {
-            color: #FFFFFF;
-            text-decoration: none;
+            color: #FFFFFF; /* 链接保持白色 */
+            text-decoration: none; /* 去掉下划线 */
         }
         #network-list li a:hover {
-            color: #00FFFF;
+            color: #00FFFF; /* 鼠标悬停变青色 */
         }
         #network-list li.selected {
-            color: #00FFFF;
+            color: #00FFFF; /* 青色高亮 */
         }
         #network-list li.selected a {
-            color: #00FFFF;
+            color: #00FFFF; /* 选中项的链接也是青色 */
         }
         #network-list li.selected a:hover {
-            color: #FFFFFF;
+            color: #FFFFFF; /* 选中项鼠标悬停变白色 */
         }
         #head-container {
             position: absolute;
             top: 2vw;
             right: 2vw;
-            text-align: left;
+            text-align: left; /* 左对齐 */
         }
         #pixel-head {
-            max-width: clamp(150px, 20vw, 200px);
-            max-height: clamp(120px, 16vw, 161px);
-            aspect-ratio: 1280 / 1031;
-            background-color: #FF4500;
-            image-rendering: pixelated;
-            object-fit: contain;
-            cursor: pointer;
-            filter: drop-shadow(0 0 10px #00FF00); /* 图片发光 */
-            transition: transform 0.3s ease; /* 鼠标悬停动画 */
-        }
-        #pixel-head:hover {
-            transform: scale(1.1); /* 鼠标悬停放大 */
+            max-width: clamp(150px, 20vw, 200px); /* 限制最大宽度，自适应 */
+            max-height: clamp(120px, 16vw, 161px); /* 限制最大高度，保持比例 */
+            aspect-ratio: 1280 / 1031; /* 保持图片原始比例 1280x1031 */
+            background-color: #FF4500; /* 橙红色，备用背景 */
+            image-rendering: pixelated; /* 像素风 */
+            object-fit: contain; /* 确保图片按比例缩放，不变形 */
+            cursor: pointer; /* 鼠标悬停显示手型 */
         }
         #status {
-            margin-top: 0.5vw;
+            margin-top: 0.5vw; /* 调小 margin-top，离图片更近 */
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
-            text-align: left;
-            text-shadow: 0 0 5px #00FF00;
+            text-align: left; /* 左对齐 */
         }
         #status .red-text {
-            color: #FF0000;
+            color: #FF0000; /* 红色字体 */
         }
         #status .red-text a {
-            color: #FF0000;
-            text-decoration: none;
+            color: #FF0000; /* 保持链接颜色为红色 */
+            text-decoration: none; /* 去掉下划线 */
         }
         #status .red-text a:hover {
-            color: #00FFFF;
+            color: #00FFFF; /* 鼠标悬停变青色 */
         }
         #status .time-spacing {
-            margin-top: 1vw;
+            margin-top: 1vw; /* 给 BEIJING TIME 和 Tor 之间加间距 */
         }
         #terminal {
             position: absolute;
-            bottom: calc(2vw + 20px);
+            bottom: calc(2vw + 20px); /* 原 2vw 基础上加 20px，往上移 2cm */
             left: 2vw;
             font-size: clamp(12px, 1.5vw, 14px);
             color: #00FF00;
-            width: 90%;
-            text-shadow: 0 0 5px #00FF00;
-        }
-        #terminal-content::after {
-            content: '_';
-            animation: blink 1s step-end infinite; /* 闪烁光标 */
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
+            width: 90%; /* 限制宽度，防止溢出 */
         }
         #terminal a {
-            color: #00FF00;
-            text-decoration: none;
+            color: #00FF00; /* 链接保持绿色 */
+            text-decoration: none; /* 去掉下划线 */
         }
         #terminal a:hover {
-            color: #00FFFF;
+            color: #00FFFF; /* 鼠标悬停变青色 */
         }
         /* 手机端调整 */
         @media (max-width: 768px) {
@@ -146,9 +122,9 @@
 <body>
     <!-- 左侧网络列表 -->
     <div id="network-list">
-        <h2>DEEPWEB GATEWAYS</h2>
+        <h2>PRIVATE NETWORK LIST</h2>
         <ul>
-            <li><a href="https://geti2p.net/en/" target="_blank">I2P Network</a></li>
+            <li><a href="https://geti2p.net/en/" target="_blank">I2P network</a></li>
             <li><a href="https://www.hyphanet.org/index.html" target="_blank">Hyphanet</a></li>
             <li><a href="https://opennic.org/" target="_blank">OpenNIC</a></li>
             <li><a href="http://wiki.ucis.nl/Anonet" target="_blank">AnoNet</a></li>
@@ -158,7 +134,7 @@
             <li><a href="https://www.gnunet.org/en/index.html" target="_blank">GNUnet</a></li>
             <li><a href="https://zeronet.io/" target="_blank">ZeroNet</a></li>
             <li><a href="https://dn42.eu/Home" target="_blank">dn42</a></li>
-            <li class="selected">> <a href="https://t.me/+VPA1Aifge0w2ODVl" target="_blank">Level 9 Network</a></li>
+            <li class="selected">> <a href="https://t.me/+VPA1Aifge0w2ODVl" target="_blank">Сеть уровня 9</a></li>
         </ul>
     </div>
 
@@ -168,97 +144,56 @@
             <img id="pixel-head" src="pixel-head.png" alt="Pixel Head">
         </a>
         <div id="status">
-            Abyss Keeper: <span class="red-text"><a href="https://t.me/+yGM41xlVN9ZjMGNl" target="_blank">LRBILOOL</a></span><br>
-            Encryption: AES-256<br>
-            Tor: Active<br>
+            Website Owner: <span class="red-text"><a href="https://t.me/+yGM41xlVN9ZjMGNl" target="_blank">LRBILOOL</a></span><br>
+            Privacy: 5<br>
+            Tor: 3<br>
             <div class="time-spacing">
-                System Time: <span id="beijing-time">05/18/25 03:43:<span class="red-text">00</span> AM</span>
+                Beijing Time: <span id="beijing-time">05/16/25 00:00:<span class="red-text">51</span> AM</span>
             </div>
         </div>
     </div>
 
     <!-- 底部终端文本 -->
     <div id="terminal">
-        <div id="terminal-content">
-            Accessing AbyssNet LION777 Gateway... Connection Established.<br><br>
-            WARNING: You are entering the Deepest Darkest Internet Abyss. Proceed at your own risk.<br>
-            All Nodes are Unverified, OFFLINE, or Potentially Hazardous.<br><br>
-            [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
-            [DarkNet TOR only] .onion<br>
-            [Hyphanet IP and addresses]<br>
-            [ChaosVPN] .hack<br>
-            [OpenNIC] .bbs .bit .chan .cyb .free .dyn .geek .gopher .indy .libre .null .o .oss .oz .neo .parody .pirate<br>
-            [AnoNet] .ano<br>
-            [AlieNet] .anon<br>
-            [Misc.] .i2p network .dn42 .0net .GNUnet .ZeroNet<br>
-            [Last Access: X0A0] | For Educational Purposes Only.<br><br>
-        </div>
+        Enter the Deepest Darkest Internet Abyss LION777 Node Database. All Sites are Unsafe, OFFLINE, and/or has gone unchecked.<br><br>
+        [ClearNet] .chat .cab .cf .ga .gq .tk .ml .exposed .ninja .wtf .rip<br>
+        [DarkNet TOR only] .onion<br>
+        [Hyphanet IP and addresses]<br>
+        [ChaosVPN] .hack<br>
+        [OpenNIC] .bbs .bit .chan .cyb .free .dyn .geek .gopher .indy .libre .null .o .oss .oz .neo .parody .pirate<br>
+        [AnoNet] .ano<br>
+        [AlieNet] .anon<br>
+        [Misc.] .i2p network .dn42 .0net .Polaris .GNUnet .ZeroNet<br>
+        [View at own risk]|Archived and Educational Purposes Only. |<br><br>
     </div>
 
-    <!-- JavaScript 实现打字机效果和时间更新 -->
+    <!-- JavaScript 实时更新北京时间 -->
     <script>
-        // 打字机效果
-        const terminalContent = document.getElementById('terminal-content');
-        const text = terminalContent.innerHTML;
-        terminalContent.innerHTML = '';
-        let i = 0;
-
-        function typeWriter() {
-            if (i < text.length) {
-                terminalContent.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50); // 每 50ms 显示一个字符
-            }
-        }
-        typeWriter();
-
-        // 实时更新北京时间
         function updateBeijingTime() {
             const now = new Date();
+            // 北京时间是 UTC+8，调整时间
             const beijingOffset = 8 * 60; // 北京时间比 UTC 快 8 小时（分钟计算）
             const localOffset = now.getTimezoneOffset(); // 本地时区偏移（分钟）
             const beijingTime = new Date(now.getTime() + (beijingOffset + localOffset) * 60 * 1000);
 
-            const month = String(beijingTime.getMonth() + 1).padStart(2, '0');
+            // 格式化日期和时间
+            const month = String(beijingTime.getMonth() + 1).padStart(2, '0'); // 月份从 0 开始，所以 +1
             const day = String(beijingTime.getDate()).padStart(2, '0');
-            const year = String(beijingTime.getFullYear()).slice(-2);
+            const year = String(beijingTime.getFullYear()).slice(-2); // 取后两位年份
             const hours = beijingTime.getHours();
             const minutes = String(beijingTime.getMinutes()).padStart(2, '0');
             const seconds = String(beijingTime.getSeconds()).padStart(2, '0');
             const ampm = hours >= 12 ? 'PM' : 'AM';
-            const formattedHours = String(hours % 12 || 12).padStart(2, '0');
+            const formattedHours = String(hours % 12 || 12).padStart(2, '0'); // 转成 12 小时制
 
+            // 拼接格式：MM/DD/YY HH:MM:SS AM/PM
             const timeString = `${month}/${day}/${year} ${formattedHours}:${minutes}:<span class="red-text">${seconds}</span> ${ampm}`;
             document.getElementById('beijing-time').innerHTML = timeString;
         }
+
+        // 每秒更新时间
         setInterval(updateBeijingTime, 1000);
-        updateBeijingTime();
-
-        // 点击网络列表更新终端信息
-        const networkItems = document.querySelectorAll('#network-list li');
-        networkItems.forEach(item => {
-            item.addEventListener('click', () => {
-                const networkName = item.textContent.replace('> ', '').trim();
-                terminalContent.innerHTML = `Accessing ${networkName}... Connection Established.<br><br>`;
-                setTimeout(() => {
-                    terminalContent.innerHTML += `Node Status: Unverified | Risk Level: High<br>`;
-                    terminalContent.innerHTML += `Proceed with caution. AbyssNet is not responsible for any consequences.<br><br>`;
-                }, 1000);
-                i = 0;
-                typeWriter();
-            });
-        });
+        updateBeijingTime(); // 立即执行一次
     </script>
-
-    <!-- 背景音效（可选，注释掉） -->
-    <!--
-    <audio id="bg-audio" autoplay loop>
-        <source src="dark-ambient.mp3" type="audio/mpeg">
-    </audio>
-    <script>
-        const audio = document.getElementById('bg-audio');
-        audio.volume = 0.2; // 音量调低
-    </script>
-    -->
 </body>
 </html>
